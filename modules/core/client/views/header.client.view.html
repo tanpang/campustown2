@@ -1,50 +1,82 @@
-<div class="container" ng-controller="HeaderController as vm">
-  <div class="navbar-header">
-    <button class="navbar-toggle" type="button" ng-click="vm.isCollapsed = !vm.isCollapsed">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a ui-sref="home" class="navbar-brand">MEAN.JS</a>
-  </div>
-  <nav class="navbar-collapse" uib-collapse="!vm.isCollapsed" role="navigation">
-    <ul class="nav navbar-nav" ng-if="vm.menu.shouldRender(vm.authentication.user);">
-      <li ng-repeat="item in vm.menu.items | orderBy: 'position'" ng-if="item.shouldRender(vm.authentication.user);" ng-switch="item.type" ng-class="{ dropdown: item.type === 'dropdown' }" ui-sref-active="active" class="{{item.class}}" uib-dropdown="item.type === 'dropdown'">
-        <a ng-switch-when="dropdown" class="dropdown-toggle" uib-dropdown-toggle role="button">{{::item.title}}&nbsp;<span class="caret"></span></a>
-        <ul ng-switch-when="dropdown" class="dropdown-menu">
-          <li ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(vm.authentication.user);">
-            <a ui-sref="{{subitem.state}}({{subitem.params}})" ng-bind="subitem.title"></a>
-          </li>
-        </ul>
-        <a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right" ng-hide="vm.authentication.user">
-      <li ui-sref-active="active">
-        <a ui-sref="authentication.signup">Sign Up</a>
-      </li>
-      <li class="divider-vertical"></li>
-      <li ui-sref-active="active">
-        <a ui-sref="authentication.signin">Sign In</a>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right" ng-show="vm.authentication.user">
-      <li class="dropdown" uib-dropdown>
-        <a class="dropdown-toggle user-header-dropdown-toggle" uib-dropdown-toggle role="button">
-          <img ng-src="/{{vm.authentication.user.profileImageURL}}" alt="{{vm.authentication.user.displayName}}" class="header-profile-image" />
-          <span ng-bind="vm.authentication.user.displayName"></span> <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu" role="menu">
-          <li ui-sref-active="active" ng-repeat="item in vm.accountMenu.items">
-            <a ui-sref="{{item.state}}" ng-bind="item.title"></a>
-          </li>
-          <li class="divider"></li>
-          <li>
-            <a href="/api/auth/signout" target="_self">Signout</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
+<div ng-controller="HeaderController as vm">
+    <!--<button class="navbar-toggle" type="button" ng-click="vm.isCollapsed = !vm.isCollapsed;vm.background()">-->
+      <!--<span class="sr-only">Toggle navigation</span>-->
+      <!--<span class="icon-bar"></span>-->
+      <!--<span class="icon-bar"></span>-->
+      <!--<span class="icon-bar"></span>-->
+    <!--</button>-->
+    <div style="display: flex">
+      <!--<img src="/modules/core/client/img/brand/logo.png" style="flex: 3;height: 37px;margin-left: 10px">-->
+      <span style="flex: 3"></span>
+      <button ng-click="vm.openReservation()" style="height: 100%;flex: 1;margin-top: 5px;margin-bottom: 5px;border: solid 1px rgba(0, 0, 0, 0.5);border-radius: 5px;width: 30%;background-color: white" type="button" class="pull-right">
+        개설
+      </button>
+    </div>
+    <div id="map" style="width:100%;height:110px;border-top: solid 1px rgba(0, 0, 0, 0.5)"></div>
+    <div style="display: flex;margin-left: 10px;margin-right: 10px;border-bottom: 1px solid gainsboro">
+      <div style="flex: 1; display: flex;align-items: center;justify-content: center">
+        위치
+      </div>
+      <div style="flex: 4;font-size: large;display: flex;align-items: center;">
+        <input type="text" data-ng-model="vm.location" placeholder="약속 장소 검색">
+      </div>
+    </div>
+    <div style="display: flex;margin-left: 10px;margin-right: 10px;border-bottom: 1px solid gainsboro">
+      <div style="flex: 1; display: flex;align-items: center;justify-content: center">
+        시간
+      </div>
+      <div style="flex: 4;font-size: large;display: flex;align-items: center;">
+        <input type="time" data-ng-model="vm.time" placeholder="약속 장소 검색">
+      </div>
+    </div>
+    <div style="display: flex;border-bottom: 1px solid rgba(0, 0, 0, 0.3); padding-left: 10px; padding-right: 10px">
+      <div style="flex: 1; display: flex;align-items: center;justify-content: center">
+        당부
+      </div>
+      <div style="flex: 4;font-size: large;display: flex;align-items: center;">
+        <input style="width: 100%" type="text" data-ng-model="vm.message" placeholder="남기실 메세지를 입력해주세요">
+      </div>
+    </div>
+  <!--<nav class="navbar-collapse" uib-collapse="!vm.isCollapsed" role="navigation">-->
+    <!--&lt;!&ndash;<ul class="nav navbar-nav" ng-if="vm.menu.shouldRender(vm.authentication.user);">&ndash;&gt;-->
+      <!--&lt;!&ndash;<li ng-repeat="item in vm.menu.items | orderBy: 'position'" ng-if="item.shouldRender(vm.authentication.user);" ng-switch="item.type" ng-class="{ dropdown: item.type === 'dropdown' }" ui-sref-active="active" class="{{item.class}}" uib-dropdown="item.type === 'dropdown'">&ndash;&gt;-->
+        <!--&lt;!&ndash;<a ng-switch-when="dropdown" class="dropdown-toggle" uib-dropdown-toggle role="button">{{::item.title}}&nbsp;<span class="caret"></span></a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<ul ng-switch-when="dropdown" class="dropdown-menu">&ndash;&gt;-->
+          <!--&lt;!&ndash;<li ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(vm.authentication.user);">&ndash;&gt;-->
+            <!--&lt;!&ndash;<a ui-sref="{{subitem.state}}({{subitem.params}})" ng-bind="subitem.title"></a>&ndash;&gt;-->
+          <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>&ndash;&gt;-->
+      <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+    <!--<ul class="nav navbar-nav navbar-right" ng-hide="vm.authentication.user">-->
+      <!--<li ui-sref-active="active">-->
+        <!--<a ui-sref="authentication.signup">약속 목록</a>-->
+      <!--</li>-->
+      <!--<li ui-sref-active="active">-->
+        <!--<a ui-sref="authentication.signup">가입하기</a>-->
+      <!--</li>-->
+      <!--<li class="divider-vertical"></li>-->
+      <!--<li ui-sref-active="active">-->
+        <!--<a ui-sref="authentication.signin">로그인</a>-->
+      <!--</li>-->
+    <!--</ul>-->
+    <!--<ul class="nav navbar-nav navbar-right" ng-show="vm.authentication.user">-->
+      <!--<li class="dropdown" uib-dropdown>-->
+        <!--<a class="dropdown-toggle user-header-dropdown-toggle" uib-dropdown-toggle role="button">-->
+          <!--<img ng-src="/{{vm.authentication.user.profileImageURL}}" alt="{{vm.authentication.user.displayName}}" class="header-profile-image" />-->
+          <!--<span ng-bind="vm.authentication.user.displayName"></span> <b class="caret"></b>-->
+        <!--</a>-->
+        <!--<ul class="dropdown-menu" role="menu">-->
+          <!--<li ui-sref-active="active" ng-repeat="item in vm.accountMenu.items">-->
+            <!--<a ui-sref="{{item.state}}" ng-bind="item.title"></a>-->
+          <!--</li>-->
+          <!--<li class="divider"></li>-->
+          <!--<li>-->
+            <!--<a href="/api/auth/signout" target="_self">Signout</a>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</li>-->
+    <!--</ul>-->
+  <!--</nav>-->
 </div>

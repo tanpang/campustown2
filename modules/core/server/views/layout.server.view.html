@@ -39,9 +39,9 @@
 </head>
 
 <body class="ng-cloak">
-  <header ng-include="'/modules/core/client/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
-  <section class="content">
-    <section class="container">
+  <header style="margin-bottom: 10px!important;background-color: white" ng-include="'/modules/core/client/views/header.client.view.html'" class="navbar navbar-fixed-top "></header>
+  <section class="content" style="margin-top: 260px!important;">
+    <section class="container" id="content">
       {{{block "content"}}}
     </section>
   </section>
@@ -56,6 +56,8 @@
       <strong>This page requires JavaScript.</strong> Please enable it in your browser.
     </div>
   </noscript>
+
+  <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=yzOl5ks5D9R3ySn8WN8R&submodules=geocoder"></script>
 
   <!--Embedding The User Object-->
   <script type="text/javascript">
