@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>list</title> 
+<title>list</title>
 <link rel="stylesheet" href="./res/css/bootstrap.css">
 <link rel="stylesheet" href="./res/css/bootstrap-theme.css">
 <script src="./res/js/bootstrap.min.js"></script>
@@ -29,7 +29,7 @@ function show_msg(msg){
 	setTimeout(function(){
 		var input = confirm(msg);
 		if(input){
-			alert("정상 완료");		
+			alert("정상 완료");
 		}else{
 			alert("취소 완료");
 		}
@@ -46,7 +46,7 @@ function show_msg(msg){
         <nav class="navbar navbar-inverse navbar-static-top">
           <div class="container">
             <div class="navbar-header">
-              <a class="navbar-brand" href="#" onclick="javascript:show_map()">어디까지 왔나 지도 보기</a>
+              <a class="navbar-brand" href="#" ui-sref="show_map">어디까지 왔나 지도 보기</a>
             </div>
           </div>
         </nav>
@@ -68,7 +68,7 @@ function show_msg(msg){
 			<h2 >강수진</h2>
 			<p>010-2345-8765</p>
 		  </span>
-		  <span class="attend-yn attend-y">참석</span>        
+		  <span class="attend-yn attend-y">참석</span>
 		</div><!-- /.col-lg-4 -->
 		<div class="divider"></div>
         <div class="col-lg-4  person">
@@ -82,7 +82,7 @@ function show_msg(msg){
 		<div class="divider"></div>
 		<div class="col-lg-4  person">
           <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <span class="info"> 
+          <span class="info">
 			<h2 >박윤태</h2>
 			<p >010-2343-4332</p>
  		  </span>
@@ -90,7 +90,7 @@ function show_msg(msg){
         </div><!-- /.col-lg-4 -->
 		<div class="col-lg-4  person">
           <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <span class="info"> 
+          <span class="info">
 			<h2 >김광선</h2>
 			<p >010-6733-1392</p>
  		  </span>
@@ -105,6 +105,6 @@ function show_msg(msg){
 		<a href="#" class="below-btn" id="build-btn">모임 만들기</a>
 		<a href="#" class="below-btn" id="cancel-btn">취소</a>
 	</section>
-	
-</body> 
+
+</body>
 </html>

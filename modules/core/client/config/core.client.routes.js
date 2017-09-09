@@ -41,7 +41,7 @@
       })
       .state('show_map', {
         url: '/show_map',
-        templateUrl: '/modules/core/client/views/meet_list.html',
+        templateUrl: '/modules/core/client/views/map2.html',
         controller: 'HomeController',
         controllerAs: 'vm'
       })
