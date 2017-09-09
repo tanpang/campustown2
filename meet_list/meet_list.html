@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>list</title> 
+<link rel="stylesheet" href="./res/css/bootstrap.css">
+<link rel="stylesheet" href="./res/css/bootstrap-theme.css">
+<script src="./res/js/bootstrap.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+   crossorigin="anonymous"></script>
+
+<script>
+$(function(){
+	$('#build-btn').on('click',function(){
+		show_msg("모임개설을 개설하시겠습니까?");
+	});
+	$('#cancel-btn').on('click',function(){
+		show_msg("모임개설을 취소하시겠습니까?");
+	});
+});
+
+function show_map(){
+	// map page 이동
+}
+
+function show_msg(msg){
+	setTimeout(function(){
+		var input = confirm(msg);
+		if(input){
+			alert("정상 완료");		
+		}else{
+			alert("취소 완료");
+		}
+		self.close();
+	}, 1000)
+}
+
+
+</script>
+</head>
+<body>
+    <div class="navbar-wrapper">
+      <div class="container">
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#" onclick="javascript:show_map()">어디까지 왔나 지도 보기</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+	  <div class="divider"></div>
+        <div class="col-lg-4 person">
+          <img  class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <span class="info">
+			<h2 >강수진</h2>
+			<p>010-2345-8765</p>
+		  </span>
+		  <span class="attend-yn attend-y">참석</span>        
+		</div><!-- /.col-lg-4 -->
+		<div class="divider"></div>
+        <div class="col-lg-4  person">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <span class="info">
+			<h2 >박준하</h2>
+			<p >010-5683-4059</p>
+		  </span>
+          <span class="attend-yn attend-n">거절</span>
+        </div><!-- /.col-lg-4 -->
+		<div class="divider"></div>
+		<div class="col-lg-4  person">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <span class="info"> 
+			<h2 >박윤태</h2>
+			<p >010-2343-4332</p>
+ 		  </span>
+		  <span class="attend-yn attend-y">참석</span>
+        </div><!-- /.col-lg-4 -->
+		<div class="col-lg-4  person">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <span class="info"> 
+			<h2 >김광선</h2>
+			<p >010-6733-1392</p>
+ 		  </span>
+		  <span class="attend-yn attend-0">미정</span>
+        </div><!-- /.col-lg-4 -->
+
+		</div><!-- /.row -->
+      <hr class="featurette-divider">
+    </div><!-- /.container -->
+
+	<section class="below-btn-set">
+		<a href="#" class="below-btn" id="build-btn">모임 만들기</a>
+		<a href="#" class="below-btn" id="cancel-btn">취소</a>
+	</section>
+	
+</body> 
+</html>
