@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>color</title> 
+<link rel="stylesheet" type="text/css" href="">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+   crossorigin="anonymous"></script>
+<style>
+    .side_menu{width:30px; height:1600px; background-color:black}
+	#open_menu{width:30px; height:30px; background-color:white}
+	
+    .container{width:900px; height:1600px}
+	#color_side{width: 100%; height:50%}
+	#word_side{width: 100%; height:50%; text-align:center; vertical-align:middle; font-size:100px;}
+</style>
+<script>
+$(function(){
+	var color='blue';
+	var word='IoT';
+	
+	show_color(color);
+	show_word(word);
+	
+});
+
+function show_color(color){
+	$('#color_side').css('background-color',color);
+}
+
+function show_word(word){
+	$('#word_side').html(word);
+}
+
+</script>
+</head>
+<body>
+	<aside class="side_menu">
+		<div id="open_menu">+</div>
+	</aside>
+	<section class="container">
+		<div id="color_side"></div>
+		<div id="word_side"></div>
+	</section>
+</body> 
+</html>

@@ -6582,3 +6582,4 @@ button.close {
 .below-btn{background-color:lightblue; width: 500px; height: 330px;}
 .below-btn:hover{background-color:blue;}
 .devider{clear: both; height:10px;}
+#map-wrapper{background-color:lightyellow;}
